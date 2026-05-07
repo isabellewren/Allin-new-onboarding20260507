@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="aura2" cx="60%" cy="55%" r="60%">
+      <stop offset="0%" stop-color="#B0C5BE" stop-opacity="0.8"></stop>
+      <stop offset="45%" stop-color="#DEE6E0" stop-opacity="0.6"></stop>
+      <stop offset="100%" stop-color="#4A3F35" stop-opacity="0.55"></stop>
+    </radialGradient>
+    <radialGradient id="fig2" cx="38%" cy="68%" r="25%">
+      <stop offset="0%" stop-color="#243E42" stop-opacity="0.65"></stop>
+      <stop offset="100%" stop-color="#243E42" stop-opacity="0"></stop>
+    </radialGradient>
+    <filter id="grain2">
+      <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="2"></feTurbulence>
+      <feColorMatrix values="0 0 0 0 0.95  0 0 0 0 0.9  0 0 0 0 0.8  0 0 0 0.07 0"></feColorMatrix>
+      <feComposite in2="SourceGraphic" operator="in"></feComposite>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="#8FA6A6"></rect>
+  <rect width="800" height="600" fill="url(#aura2)"></rect>
+  <ellipse cx="300" cy="420" rx="140" ry="200" fill="url(#fig2)"></ellipse>
+  <rect width="800" height="600" filter="url(#grain2)"></rect>
+</svg>

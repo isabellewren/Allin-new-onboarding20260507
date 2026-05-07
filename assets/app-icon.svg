@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="iconOrb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F4C49B"></stop>
+      <stop offset="25%" stop-color="#C48C5E" stop-opacity="0.95"></stop>
+      <stop offset="55%" stop-color="#B96A4A" stop-opacity="0.45"></stop>
+      <stop offset="100%" stop-color="#243E42" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="iconCore" cx="44%" cy="40%" r="35%">
+      <stop offset="0%" stop-color="#FFF1E3" stop-opacity="0.95"></stop>
+      <stop offset="100%" stop-color="#D79B6A" stop-opacity="0"></stop>
+    </radialGradient>
+    <clipPath id="squircle">
+      <rect x="0" y="0" width="512" height="512" rx="114" ry="114"></rect>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#squircle)">
+    <rect width="512" height="512" fill="#243E42"></rect>
+    <circle cx="256" cy="256" r="220" fill="url(#iconOrb)"></circle>
+    <circle cx="256" cy="256" r="120" fill="url(#iconCore)"></circle>
+  </g>
+</svg>

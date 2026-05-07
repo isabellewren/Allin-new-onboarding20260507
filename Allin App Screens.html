@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Allin — App Screens</title>
+<meta name="viewport" content="width=1100"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600&family=Commissioner:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="colors_and_type.css"/>
+<style>
+  :root {
+    --ink: #243E42;
+    --ink-muted: #5E7478;
+    --base: #F4F0E6;
+    --sand: #DEE6E0;
+    --border: rgba(74,63,53,0.14);
+    --rust: #B96A4A;
+    --apricot: #D79B6A;
+    --f-display: 'Optima','Candara','Avenir Next','Gill Sans','Commissioner',sans-serif;
+    --f-body: 'Manrope',-apple-system,system-ui,sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--base); color: var(--ink); font-family: var(--f-body); }
+  body { padding: 56px 0 120px; }
+
+  /* shared keyframe used by Orbs + the B1 welcome layered orb */
+  @keyframes allin-breathe {
+    0%, 100% { transform: scale(1);    opacity: 0.95; }
+    50%      { transform: scale(1.06); opacity: 1;    }
+  }
+
+  /* ── Sticky index nav ─────────────────────────── */
+  .toc {
+    position: fixed; top: 24px; left: 24px; z-index: 20;
+    background: rgba(251,248,239,0.88);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 12px;
+    max-width: 180px;
+  }
+  .toc-title {
+    font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink-muted); font-weight: 500; margin-bottom: 10px;
+  }
+  .toc a {
+    display: block; color: var(--ink); text-decoration: none;
+    padding: 5px 0; line-height: 1.35;
+    border-bottom: 1px solid transparent;
+    transition: color 140ms;
+  }
+  .toc a:hover { color: var(--rust); }
+
+  .page { max-width: 560px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── Header ───────────────────────────────────── */
+  .page-head {
+    display: flex; align-items: center; gap: 12px;
+    padding-bottom: 20px; margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--f-display); font-weight: 300; font-size: 22px;
+  }
+  .brand .dot { color: var(--rust); }
+  .brand .orb {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 40%, #FFF8EC 0%, #D79B6A 50%, rgba(185,106,74,.4) 85%, rgba(185,106,74,0) 100%);
+  }
+  .page-meta {
+    font-family: var(--f-body); font-size: 11px; color: var(--ink-muted);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-left: auto;
+  }
+
+  /* ── Section heading ──────────────────────────── */
+  .section { margin-top: 56px; }
+  .section:first-of-type { margin-top: 12px; }
+  .section-head {
+    display: flex; align-items: baseline; gap: 14px;
+    padding-bottom: 18px; margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head .kicker {
+    font-family: var(--f-body); font-size: 11px; color: var(--ink-muted);
+    text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;
+  }
+  .section-head .count {
+    font-family: var(--f-body); font-size: 11px; color: var(--ink-muted);
+    letter-spacing: 0.1em; margin-left: auto;
+  }
+  .section-head h2 {
+    font-family: var(--f-display); font-weight: 300; font-size: 26px;
+    letter-spacing: 0.01em; margin: 0; color: var(--ink);
+  }
+  .section-head h2 .dot { color: var(--rust); }
+
+  /* ── Screen row ───────────────────────────────── */
+  .screen {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .screen-caption {
+    display: flex; align-items: baseline; gap: 10px;
+    width: 100%;
+    padding: 0 4px;
+  }
+  .screen-caption .num {
+    font-family: var(--f-body); font-variant-numeric: tabular-nums;
+    font-size: 11px; color: var(--ink-muted); letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .screen-caption .title {
+    font-family: var(--f-body); font-size: 14px; color: var(--ink);
+    font-weight: 500;
+  }
+  .screen-caption .sub {
+    font-family: var(--f-body); font-size: 13px; color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .frame-wrap {
+    display: flex; justify-content: center; width: 100%;
+    padding: 24px 20px;
+    background:
+      repeating-linear-gradient(45deg, rgba(74,63,53,0.025) 0 2px, transparent 2px 12px),
+      linear-gradient(180deg, #F8F4E8 0%, #F4F0E6 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── loader ──────────────────────── */
+  .loader {
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px; color: var(--ink-muted); font-size: 13px;
+  }
+
+  @media (max-width: 960px) {
+    .toc { display: none; }
+  }
+</style>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="AllinShared.jsx"></script>
+<script type="text/babel" src="AllinScreensA.jsx"></script>
+<script type="text/babel" src="AllinScreensB.jsx"></script>
+<script type="text/babel" src="AllinScreensC.jsx"></script>
+<script type="text/babel" src="AllinScreensD.jsx"></script>
+<!-- New B · Layered onboarding (replaces previous onboarding screens) -->
+<script type="text/babel" src="AllinScreensOnboarding.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+</head>
+<body>
+
+<nav class="toc" id="toc"></nav>
+
+<div class="page">
+
+  <div class="page-head">
+    <div class="brand">
+      <span class="orb"></span>
+      <span>Allin<span class="dot">.</span></span>
+    </div>
+    <div class="page-meta">app screens  ·  v3</div>
+  </div>
+
+  <div id="app"></div>
+</div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+// ── the screen catalogue ─────────────────────────────────────────
+const SCREENS = [
+  // Entry
+  { group: 'entry', num: '01', title: 'Opening',                            sub: 'first touch',         comp: 'OpeningScreen', dark: true },
+  { group: 'entry', num: '02', title: 'Sign-in',                            sub: 'sign in with apple',  comp: 'SplashScreen' },
+
+  // Onboarding — B · Layered (8 screens)
+  { group: 'onboarding', num: 'O1', title: 'Onboarding \u2014 welcome',       sub: 'step 1 of 8',         comp: 'B1_Welcome' },
+  { group: 'onboarding', num: 'O2', title: 'Onboarding \u2014 surface',       sub: 'step 2 of 8',         comp: 'B2_Surface' },
+  { group: 'onboarding', num: 'O3', title: 'Onboarding \u2014 deeper',        sub: 'step 3 of 8',         comp: 'B3_Deeper' },
+  { group: 'onboarding', num: 'O4', title: 'Onboarding \u2014 rewire',        sub: 'step 4 of 8',         comp: 'B4_Rewire' },
+  { group: 'onboarding', num: 'O5', title: 'Onboarding \u2014 flow',          sub: 'step 5 of 8',         comp: 'B5_Flow' },
+  { group: 'onboarding', num: 'O6', title: 'Onboarding \u2014 over time',     sub: 'step 6 of 8',         comp: 'B6_OverTime' },
+  { group: 'onboarding', num: 'O7', title: 'Onboarding \u2014 disclaimer',    sub: 'step 7 of 8',         comp: 'B7_Disclaimer' },
+  { group: 'onboarding', num: 'O8', title: 'Onboarding \u2014 short film',    sub: 'step 8 of 8',         comp: 'B8_Film' },
+
+  // Home
+  { group: 'home',  num: '03', title: 'Dashboard',                            sub: 'today, a ritual',     comp: 'DashboardScreen' },
+
+  // Check-in flow
+  { group: 'check-in', num: '04', title: 'Check-in \u2014 emotion',           sub: 'step 1 of 5',         comp: 'CheckinEmotionScreen' },
+  { group: 'check-in', num: '05', title: 'Check-in \u2014 body',              sub: 'step 2 of 5',         comp: 'CheckinBodyScreen' },
+  { group: 'check-in', num: '06', title: 'Check-in \u2014 trigger',           sub: 'step 3 of 5',         comp: 'CheckinTriggerScreen' },
+  { group: 'check-in', num: '07', title: 'Check-in \u2014 belief',            sub: 'step 4 of 5',         comp: 'CheckinBeliefScreen' },
+  { group: 'check-in', num: '08', title: 'Check-in \u2014 the shift',         sub: 'step 5 of 5',         comp: 'CheckinDesiredScreen' },
+
+  // Audio / session
+  { group: 'session', num: '09', title: 'Audio library',                      sub: 'sessions, by feel',   comp: 'AudioLibraryScreen' },
+  { group: 'session', num: '10', title: 'Session \u2014 in-audio',            sub: 'dark mode',           comp: 'SessionScreen', dark: true },
+  { group: 'session', num: '11', title: 'Session \u2014 complete',            sub: 'you came home',       comp: 'SessionCompleteScreen' },
+
+  // Belief mapping — roadmap flow (lifted from Allin App 6)
+  { group: 'beliefs', num: 'B1', title: 'Map beliefs \u2014 rate areas',      sub: 'step 1 of 4',         comp: 'BeliefsRateAreasScreen' },
+  { group: 'beliefs', num: 'B2', title: 'Map beliefs \u2014 pick three',      sub: 'area picker',         comp: 'BeliefsPickAreasScreen' },
+  { group: 'beliefs', num: 'B3', title: 'Map beliefs \u2014 current',         sub: 'step 2 of 4',         comp: 'BeliefsCurrentScreen' },
+  { group: 'beliefs', num: 'B4', title: 'Map beliefs \u2014 ideal',           sub: 'step 3 of 4',         comp: 'BeliefsIdealScreen' },
+  { group: 'beliefs', num: 'B5', title: 'Map beliefs \u2014 make it real',    sub: 'step 4 of 4',         comp: 'BeliefsMakeRealScreen' },
+  { group: 'beliefs', num: 'B6', title: 'Your 10-step plan',                  sub: 'the roadmap',         comp: 'BeliefsPlanScreen' },
+
+  // Journal & progress
+  { group: 'record', num: '12', title: 'Journal',                             sub: 'what you\u2019ve met', comp: 'JournalScreen' },
+  { group: 'record', num: '13', title: 'Progress',                            sub: '14-day intensity arc', comp: 'ProgressScreen' },
+  { group: 'record', num: '14', title: 'Profile',                             sub: 'settings, quietly',    comp: 'ProfileScreen' },
+];
+
+const GROUPS = [
+  { id: 'entry',      label: 'entry' },
+  { id: 'onboarding', label: 'onboarding  \u00b7  layered' },
+  { id: 'home',       label: 'home' },
+  { id: 'check-in',   label: 'check-in flow' },
+  { id: 'session',    label: 'session' },
+  { id: 'beliefs',    label: 'beliefs  \u00b7  roadmap' },
+  { id: 'record',     label: 'journal  \u00b7  progress  \u00b7  profile' },
+];
+
+function ScreenCard({ screen }) {
+  const Comp = window[screen.comp];
+  return (
+    <div className="screen" data-screen-label={`${screen.num} ${screen.title}`}>
+      <div className="screen-caption">
+        <span className="num">{screen.num}</span>
+        <span className="title">{screen.title.toLowerCase()}</span>
+      </div>
+      <div className="frame-wrap">
+        {window.IOSDevice && Comp ? (
+          <window.IOSDevice width={402} height={874} dark={screen.dark || false}>
+            <Comp/>
+          </window.IOSDevice>
+        ) : (
+          <div className="loader">loading {screen.comp}…</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      {GROUPS.map(g => {
+        const items = SCREENS.filter(s => s.group === g.id);
+        if (!items.length) return null;
+        return (
+          <section key={g.id} id={`sec-${g.id}`} className="section" data-screen-label={g.label}>
+            <div className="section-head">
+              <span className="kicker">{g.id}</span>
+              <h2>{g.label}<span className="dot">.</span></h2>
+              <span className="count">{items.length} {items.length === 1 ? 'screen' : 'screens'}</span>
+            </div>
+            {items.map(s => <ScreenCard key={s.num} screen={s}/>)}
+          </section>
+        );
+      })}
+    </>
+  );
+}
+
+function Toc() {
+  return (
+    <>
+      <div className="toc-title">jump to</div>
+      {GROUPS.map(g => (
+        <a key={g.id} href={`#sec-${g.id}`}>{g.label}</a>
+      ))}
+    </>
+  );
+}
+
+// wait for Babel to finish compiling the screen files, then render
+function boot() {
+  const required = [
+    'OpeningScreen', 'CheckinEmotionScreen', 'SessionCompleteScreen',
+    'BeliefsPlanScreen', 'B1_Welcome', 'B8_Film',
+  ];
+  if (required.some(n => !window[n])) {
+    return setTimeout(boot, 60);
+  }
+  ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+  ReactDOM.createRoot(document.getElementById('toc')).render(<Toc/>);
+
+  // Tweaks panel — variant switcher for B6 (over time / rewriting beliefs)
+  const tweaksRoot = document.createElement('div');
+  document.body.appendChild(tweaksRoot);
+  function TweaksApp() {
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "b6Variant": "orbs"
+    }/*EDITMODE-END*/;
+    const [t, setTweak] = window.useTweaks(TWEAK_DEFAULTS);
+    React.useEffect(() => {
+      window.__b6Variant = t.b6Variant;
+      window.postMessage({ type: '__b6_set', variant: t.b6Variant }, '*');
+    }, [t.b6Variant]);
+    return (
+      <window.TweaksPanel title="Tweaks">
+        <window.TweakSection title="O6 — over time">
+          <window.TweakSelect
+            label="Visual variant"
+            value={t.b6Variant}
+            onChange={(v) => setTweak('b6Variant', v)}
+            options={[
+              { value: 'rewrite', label: 'V1 · Depth bands (rewrite)' },
+              { value: 'tree',    label: 'V2 · Tree (roots → canopy)' },
+              { value: 'orbs',    label: 'V3 · Orbs (constellation)' },
+            ]}
+          />
+        </window.TweakSection>
+      </window.TweaksPanel>
+    );
+  }
+  ReactDOM.createRoot(tweaksRoot).render(<TweaksApp/>);
+}
+boot();
+</script>
+
+</body>
+</html>

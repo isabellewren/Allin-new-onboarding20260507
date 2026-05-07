@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="aura1" cx="35%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#F0BF90" stop-opacity="0.9"></stop>
+      <stop offset="35%" stop-color="#B96A4A" stop-opacity="0.55"></stop>
+      <stop offset="70%" stop-color="#4A3F35" stop-opacity="0.35"></stop>
+      <stop offset="100%" stop-color="#243E42" stop-opacity="0.65"></stop>
+    </radialGradient>
+    <radialGradient id="fig" cx="62%" cy="70%" r="30%">
+      <stop offset="0%" stop-color="#3A2A22" stop-opacity="0.7"></stop>
+      <stop offset="100%" stop-color="#3A2A22" stop-opacity="0"></stop>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="2" numOctaves="2"></feTurbulence>
+      <feColorMatrix values="0 0 0 0 0.95  0 0 0 0 0.9  0 0 0 0 0.8  0 0 0 0.08 0"></feColorMatrix>
+      <feComposite in2="SourceGraphic" operator="in"></feComposite>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="#4A3F35"></rect>
+  <rect width="800" height="600" fill="url(#aura1)"></rect>
+  <ellipse cx="500" cy="420" rx="160" ry="220" fill="url(#fig)"></ellipse>
+  <rect width="800" height="600" filter="url(#grain)"></rect>
+</svg>
